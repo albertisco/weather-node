@@ -7,6 +7,8 @@ const hbs = require('hbs')
 
 const app = express()
 
+const port = process.env.PORT || 3000
+
 const publicDirectoryPath = path.join(__dirname,'/../public/')
 const templateDirectoryPath = path.join(__dirname,'../templates/views')
 const partialDirectoryPath = path.join(__dirname,'../templates/render')
@@ -100,6 +102,6 @@ app.get('*', (req,resp) => {
 })
 
 
-app.listen(3000, () => {
-    console.log('Server is already running in port 3000')
+app.listen(port, () => {
+    console.log('Server is already running on port ' + port)
 })
