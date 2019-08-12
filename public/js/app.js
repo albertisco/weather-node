@@ -18,12 +18,13 @@ form.addEventListener('submit', (e) => {
 
 
     fetch(url).then((response) => {
-        response.json().then((data) => {           
+        response.json().then((data) => { 
+            console.log(data)          
             if(data.error) {
             messageOne.textContent = data.error
             } else { 
             messageOne.textContent = data.adress
-            messageTwo.textContent = `temperature: ${data.temperature} precipProbability: ${data.precipProbability}`
+            messageTwo.textContent = `temperature: ${data.temperature} precipProbability: ${data.precipProbability} highTemperature: ${data.hightemperature} minTemperature: ${data.lowtemperature}`
             }
         })
     })

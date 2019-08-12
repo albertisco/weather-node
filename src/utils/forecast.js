@@ -7,16 +7,20 @@ const forecast = (lat, long, callback) => {
         url,
         'json':true
     }, (error,{body}) => {
-        const {currently} = body
+        const {currently, daily} = body
+        const {data} = daily
         const {temperature, precipProbability, error:errorbody = undefined} = currently
+        const {temperatureHigh:hightemperature, temperatureLow:lowtemperature} = data[0]
         if(error) {
             callback('Unable to connect weather service !!',undefined)
         } else if (errorbody) {
             callback('Unable to location, try again with another coords',undefined)
         } else {
             callback(undefined, {
-                 temperature,
-                 precipProbability
+                hightemperature,
+                lowtemperature,
+                temperature,
+                precipProbability
             })
         }
     })
